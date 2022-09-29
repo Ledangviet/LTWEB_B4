@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "Upsert";
+}
+
+@model SanPham
+<div class="container">
+    <form method="post" asp-action="Upsert">
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-3">Ten San Pham</label>
+            <input asp-for="Name" type="text" class="form-control"/>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="col-md-3">Chu thich</label>
+            <input asp-for="Description" type="text" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div><div class="form-group">
+            <label asp-for="Price" class="col-md-3">Gia</label>
+            <input asp-for="Price" type="text" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div><div class="form-group">
+            <label asp-for="ImageUrl" class="col-md-3">Hinh anh</label>
+            <input asp-for="ImageUrl" type="text" class="form-control" />
+            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="TheLoaiId" class="col-md-3">The Loai</label>
+           <select asp-for="TheLoaiId" asp-items="@ViewBag.DSTheLoai" class="form-control ">
+               <option disabled>Chon the loai</option>
+           </select>
+            <span asp-validation-for="TheLoaiId" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">@(Model.Id == 0? "Tao Moi" : "Luu")</button>
+        <a asp-action="Index" class="btn btn-primary">Huy</a>
+    </form>
+</div>
+
