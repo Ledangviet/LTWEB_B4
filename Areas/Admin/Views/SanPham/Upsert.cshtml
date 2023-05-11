@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "Upsert";
+    Layout = "_RegisterLayout";
 }
 
 @model SanPham
@@ -31,8 +32,8 @@
            </select>
             <span asp-validation-for="TheLoaiId" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary">@(Model.Id == 0? "Tao Moi" : "Luu")</button>
-        <a asp-action="Index" class="btn btn-primary">Huy</a>
+        <button type="submit" class="axil-btn btn-primary">@(Model.Id == 0? "Tao Moi" : "Luu")</button>
+        <a asp-action="Index" class="axil-btn btn-primary">Huy</a>
     </form>
 </div>
 

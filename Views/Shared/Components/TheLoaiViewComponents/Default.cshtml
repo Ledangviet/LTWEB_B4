@@ -1,0 +1,13 @@
+﻿
+@model IEnumerable<TheLoaiModel>
+
+
+<li class="menu-item-has-children">
+<a href="~/Home/Blog">Categories</a>
+<ul class="axil-submenu">
+    @foreach(var item in Model)
+    {
+        <li><a href="#">@item.Name</a></li>
+    }
+</ul>
+</li>

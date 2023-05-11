@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "Delete";
+    Layout = "_RegisterLayout";
 }
 
 @model TheLoaiModel
@@ -21,8 +22,8 @@
         <span asp-validation-for="DateCreated" class="text-danger"></span>
      </div>
 
-    <button type="submit" class="btn-primary btn-primary">Xoa</button>
-    <a asp-action="Index" class="btn-primary btn-primary">Huy</a>
+    <button type="submit" class="btn btn-primary">Xoa</button>
+    <a asp-action="Index" class="btn btn-primary">Huy</a>
 </form>
    
 </div>

@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = "AddTheLoai";
+}
+
+@model TheLoaiSanPham
+<div class="container">
+    <form method="post" asp-action="AddTheLoai">
+        <div class="form-group">
+            <label asp-for="TheLoaiId" class="col-md-3">Them the loai</label>
+           <select asp-for="TheLoaiId" asp-items="@ViewBag.DSTheLoai" class="form-control ">
+               <option disabled>Chon the loai</option>
+           </select>           
+        </div>
+        <button type="submit" class="axil-btn btn-primary">Luu</button>
+        <a asp-action="Index" class="axil-btn btn-primary">Huy</a>
+    </form>
+</div>
+

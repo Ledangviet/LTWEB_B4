@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "Edit";
+    Layout = "_RegisterLayout";
 }
 
 @model TheLoaiModel
@@ -19,9 +20,8 @@
         <input asp-for="DateCreated" type="date" class="form-control"  />
         <span asp-validation-for="DateCreated" class="text-danger"></span>
      </div>
-
-    <button type="submit" class="btn-primary btn-primary">Luu</button>
-    <a asp-action="Index" class="btn-primary btn-primary">Huy</a>
+    <button type="submit" class="btn btn-primary">Luu</button>
+    <a asp-action="Index" class="btn btn-primary">Huy</a>
 </form>
    
 </div>

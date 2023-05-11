@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "ChiTiet";
+}
+
+@model IEnumerable<ChiTietHoaDon>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>ID Hoa Don</td>
+                <td>San Pham</td>
+                <td>So Luong</td>
+                <td>Gia</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.HoaDonId</td>
+                    <td>@item.SanPhamId</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.ProductsPrice</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+@model TheLoaiModel
+
+<div class="container">
+<h3>Them the loai</h3>
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">       
+        <label asp-for="Name">Ten the loai </label>
+        <input asp-for="Name" type="text" class="form-control" placeholder="The loai" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">        
+        <label asp-for="DateCreated">Ngay Tao </label>
+        <input asp-for="DateCreated" type="date" class="form-control"  />
+        <span asp-validation-for="DateCreated" class="text-danger"></span>
+     </div>
+
+    <button type="submit" class="btn-primary btn-primary">Tao moi</button>
+</form>
+   
+</div>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}
+

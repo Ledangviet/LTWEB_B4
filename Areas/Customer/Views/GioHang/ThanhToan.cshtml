@@ -1,0 +1,78 @@
+﻿@{
+    ViewData["Title"] = "ThanhToan";
+}
+@model GioHangViewModel
+<div class="container">
+<form asp-action="ThanhToan" method="post" style="max-width:800px">
+    <h2 class="">Billing Detail</h2>
+    <div class="form-group">
+        <label asp-for="HoaDon.Name" class="col-md-3">Name*</label>
+        <input asp-for="HoaDon.Name" type="text" class="form-control" />
+        <span asp-validation-for="HoaDon.Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="HoaDon.Address" class="col-md-3">Address</label>
+        <input asp-for="HoaDon.Address" type="text" placeholder="House number and Street name" class="form-control" />
+        <span asp-validation-for="HoaDon.Address" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="HoaDon.PhoneNumber" class="col-md-3">PhoneNumber</label>
+        <input asp-for="HoaDon.PhoneNumber" type="text" class="form-control" />
+        <span asp-validation-for="HoaDon.PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="HoaDon.OrderStatus" class="col-md-3">OrderStatus</label>
+        <input asp-for="HoaDon.OrderStatus" type="text" class="form-control" />
+        <span asp-validation-for="HoaDon.OrderStatus" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <div class="table-responsive">
+            <table class="table axil-product-table axil-cart-table mb--40">
+                <thead>
+                    <tr>
+                        <th scope="col" class="product-thumbnail">Product</th>
+                        <th scope="col" class="product-title"></th>
+                        <th scope="col" class="product-price">Price</th>
+                        <th scope="col" class="product-quantity">Quantity</th>
+                        <th scope="col" class="product-subtotal">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.DSGioHang)
+                    {
+                        <tr>
+                            <td class="product-thumbnail">
+                                <a href="~/Home/Product">
+                                    <img src="@item.SanPham.ImageUrl"
+                                     asp-append-version="true"
+                                     alt="Digital Product" />
+                                </a>
+                            </td>
+                            <td class="product-title">
+                                <a href="~/Home/Product">@item.SanPham.Name</a>
+                            </td>
+                            <td class="product-price" data-title="Price">
+                                <span class="currency-symbol">$ @string.Format("{0:0,0}",@item.SanPham.Price)</span> 
+                            </td>
+                            <td class="product-quantity" data-title="Qty">
+                                <div class="">
+                                    <span class="currency-symbol">@item.Quantity</span>
+                                </div>
+                            </td>
+                            <td class="product-subtotal" data-title="Subtotal">
+                                <span class="currency-symbol" $>@item.ProductPrice </span>
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td class="product-subtotal">SubTotal</td>
+                        <td> $ @String.Format("{0:0,0}",@Model.HoaDon.Total)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <button class="axil-btn btn-bg-primary" type="submit">Place Order</button>
+</form>
+</div>
+

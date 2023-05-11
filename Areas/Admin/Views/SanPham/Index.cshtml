@@ -1,8 +1,8 @@
 ﻿
 @{
     ViewData["Title"] = "Index";
+    
 }
-
 @model IEnumerable<SanPham>
 
 <div class="container">
@@ -13,7 +13,7 @@
                 <th>Ghi Chu</th>
                 <th>Gia</th>
                 <th>Hinh Anh</th>
-                <th>Id</th>
+                <th>The Loai Id</th>
             </tr>
         </thead>
         
@@ -24,11 +24,14 @@
                     <td width="30%">@item.Name</td>
                     <td width="30%">@item.Description</td>
                     <td width="30%">@item.Price</td>
-                    <td width="30%">@item.ImageUrl</td>
+                    <td maxwidth="30%">@item.ImageUrl</td>
                     <td width="30%">@item.TheLoaiId</td>
                     <td width="30%">
                         <a class="btn btn-primary" asp-action="Upsert" asp-route-id="@item.Id">Edit</a>
-                        <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <a class="btn btn-primary" onclick="xoa(@item.Id , $(this))">Delete</a>
+                        <a class="btn btn-primary" asp-action="AddImage" asp-route-id="@item.Id">D-Img</a>
+                        <a class="btn btn-primary" asp-action="AddImage2" asp-route-id="@item.Id">Add-Img</a>
+                        <a class="btn btn-primary" asp-action="RemoveImg" asp-route-id="@item.Id">Del-Img</a>
                     </td>
                 </tr>
                 </tbody>
@@ -36,15 +39,25 @@
         
     </table>
     <br />
-    <a asp-controller="SanPham" asp-action="Upsert" class="btn btn-primary">Them moi</a>
+    <a asp-controller="SanPham" asp-action="Upsert" class="axil-btn btn-primary">Them moi</a>
 </div>
 <script>
-    const xoa = (id,row) => {
-        $ajax ({
-            url:`SanPham/Delete/${id}`,
-            type:"POST"
-            success: function (data){
-                row.closest("tr").remove();
+    function xoa(id,row){
+            bootbox.confirm({ 
+            size: "small",
+            message: "Are you sure to delete this product?"+id,
+            callback: function(result){ /* result is a boolean; true = OK, false = Cancel*/ 
+                if(result){
+                    $.ajax({
+                        url:`SanPham/Delete/${id}`,
+                        type:"POST"
+                    })
+                    .done(function(data){
+                        row.closest("tr").remove();
+                        alert("Delete completed!");
+                    })
+                    
+                }
             }
         })       
     }
